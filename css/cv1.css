@@ -1,0 +1,160 @@
+body {
+    font-family: 'Gugi', cursive;
+}
+body * {box-sizing: border-box}
+.cvbody{
+    border: 1px solid blue;
+    width: 21cm;
+    height: 29.7cm;
+    border: 1px solid #00f;
+    /* padding: 50px 30px 50px 30px; */
+    box-sizing: border-box;
+    position: relative;
+}
+.top-line, .bottom-line {
+    background-color: #9654D8;
+    height: 20px;
+    position: absolute;
+    left: 0;
+    width: 100%;
+}
+.top-line {top : 0}
+.bottom-line {bottom: 0;}
+
+.header{
+    margin-top: 30px;
+    padding-left: 10px;
+}
+.personal {
+    box-sizing: border-box;
+}
+.personal, .info {padding-top: 10px;}
+.personal .img, .personal .name {
+    float: left;
+    display: inline-block;
+    width: 50%;
+}
+.personal .img {
+    width: 200px;
+    height: 200px;
+    overflow: hidden;
+}
+.personal .name h4,
+.info h6 {font-weight: bold; text-transform: uppercase}
+.personal .img img {width: 100%}
+.personal .name {margin-left: 10px;}
+.bg-grey {background-color: #e4e9ed;}
+i.icon {
+    background-color: #9654D8;
+    color: white;
+    padding: 5px;
+    border-radius: 50%;
+}
+.basicinfo {margin-bottom: 10px;}
+.info .basicinfo span {
+    margin-left: 15px;
+    color: #2e3131;
+}
+
+.paragraphs {margin-top: 20px; font-size: 13px;}
+.paragraphs .para {margin-top: 20px;}
+.paragraphs .left,
+.paragraphs .right {padding: 0}
+.paragraphs .para .title {
+    border-bottom: #9654D8 1px solid;
+    text-transform: uppercase;
+    position: relative;
+}
+.paragraphs .left .title h6{margin-left: 35px;}
+.paragraphs .title h6 {font-weight: bold}
+.paragraphs .left .para .title::before {
+    position: absolute;
+    content: '';
+    height: 100%;
+    width: 30px;
+    background-color: #9654D8
+}
+.paragraphs .para .exp {
+    padding-left: 35px;
+    padding-top: 10px;
+    /* padding-bottom: 10px; */
+    width: 92%;
+    margin-top: 10px;
+}
+.paragraphs .para .exp span {color: #6c7a89;}
+.paragraphs .para .exp .cons {font-weight: bold}
+.paragraphs .para .exp .spec {border-bottom: 1px solid #6c7a89}
+.paragraphs .para .exp p {
+    font-size: 12px;
+}
+.paragraphs .para ul.no-style li {
+    list-style: none;
+    margin-top: 5px;
+}
+.paragraphs .para ul.no-style li i {color: green; margin-right: 5px;}
+
+.paragraphs .para .personalities div {
+    background-color: #9654D8;
+    display: inline-block;
+    color: #e4e9ed;
+    margin-right: 5px;
+    margin-bottom: 5px;
+    padding: 5px 15px;
+    border-radius: 5px
+}
+.skill .level {
+    float: right;
+    background-color: #e4e9ed;
+    width: 50%;
+    height: 20px;
+    position: relative;
+    border: 1px solid #9654D8;
+    margin-right: 7px;
+}
+.skill .level::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: 100%;
+    width: 95%;
+    background-color: #9654D8;
+}
+/*************  Form *************/
+.test {
+    min-height: 200px;
+}
+.carousel-control-next {
+    width: 3%;
+    background-color: #00f;
+    position: absolute;
+    right: 0;
+}
+.cvinput {
+    border: 2px solid #00f;
+    padding: 30px;
+    margin-bottom: 20px;
+}
+.test input[type="text"] {
+    border: none;
+    border-radius: 0;
+    border-bottom: 1px solid #9a12b3;
+    border-left: 1px solid #9a12b3;
+}
+.cvinput .form-group {
+    display: inline-block;
+    margin-right: 30px;
+    /* width: 40%; */
+}
+.carousel-item h1 {
+    margin-bottom: 50px;
+}
+.carousel-item::before {
+    content: 'click to edit me';
+    color: grey;
+}
+#save {
+    font-size: 18px;
+    color: #9a12b3;
+    cursor: pointer;
+}

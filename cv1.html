@@ -1,0 +1,268 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <title></title>
+    <link rel="stylesheet" type="text/css" href="css/all.min.css">
+    <link rel="stylesheet" href="css/bootstrap.min.css">
+    <link href="https://fonts.googleapis.com/css?family=Gugi" rel="stylesheet">
+    <link rel="stylesheet" href="css/bootstrap.min.css">
+    <link rel="stylesheet" type="text/css" href="css/cv1.css">
+  </head>
+  <body>
+<div id="app">
+  
+    <div class="cvinput">
+        <div id="carouselExampleControls" class="carousel slide" data-ride="carousel" data-interval="false">
+            <div class="carousel-inner">
+              <div class="carousel-item active">
+                <div class="test">
+                  <h1 onclick="someFunc(this)" varname="informationTitle">Personal Information</h1>
+                  <form-group :name="'first name'" v-model="firstname" var-name="firstname" ></form-group>
+                  <form-group :name="'last name'" v-model="lastname" var-name="lastname" ></form-group>
+                  <form-group :name="'email'" v-model="email" var-name="email" ></form-group>
+                  <form-group :name="'Phone Number'" v-model="phone" var-name="phone" ></form-group>
+                  <form-group :name="'Address'" v-model="address" var-name="address" ></form-group>
+                  <form-group :name="'Date of birth'" v-model="birthday" var-name="address" ></form-group>
+                  <div class="form-group">
+                    <input type="file">
+                  </div>
+                </div>
+              </div>
+              <div class="carousel-item">
+                <div class="test">
+                    <h1 onclick="someFunc(this)" varname="profile">Profile </h1>
+                    <div class="form-group">
+                      <textarea id="summary" cols="50" rows="5" v-model="summary"></textarea>
+                    </div>
+                </div>
+              </div>
+              <div class="carousel-item">
+                  <div class="test">
+                    <h1 onclick="someFunc(this)" varname="educationTitle">Education</h1>
+                    <button @click="addEdu" class="btn btn-primary" style="float: right; margin-right:50px;">Add Education</button>
+                    <div v-for="edu in educations">
+                        <form-group :name="'construction name'" v-model="edu.cons"></form-group>
+                        <form-group :name="'specialization'" v-model="edu.spec"></form-group>
+                        <form-group :name="'from'" v-model="edu.startY"></form-group>
+                        <form-group :name="'to'" v-model="edu.endY"></form-group>
+                        <form-group :name="'degree'" v-model="edu.exp"></form-group>
+                        <hr>
+                    </div>
+                  </div>
+              </div>
+              <div class="carousel-item">
+                  <div class="test">
+                    <h1 onclick="someFunc(this)" varname="workTitle">Work Experience</h1>
+                    <button @click="addWork" class="btn btn-primary">Add Work</button>
+                    <div v-for="work in works">
+                        <form-group :name="'construction name'" v-model="work.cons"></form-group>
+                        <form-group :name="'major'" v-model="work.spec"></form-group>
+                        <form-group :name="'from'" v-model="work.startY"></form-group>
+                        <form-group :name="'to'" v-model="work.endY"></form-group>
+                        <form-group :name="'Description'" v-model="work.exp"></form-group>
+                        <hr>
+                    </div>
+                  </div>
+              </div>
+              <div class="carousel-item">
+                <div class="test">
+                  <h1 onclick="someFunc(this)" varname="languagesTitle">Languages</h1>
+                  <button @click="addLanguage" class="btn btn-primary" >Add Language</button>
+                  <div v-for="(lang, index) in languages">
+                    <form-group :class="'lang' + index" v-model="lang.name"></form-group>
+                    <form-group :class="'lang' + index" v-model="lang.value"></form-group>
+                    <input type="button" class="btn btn-danger" @click="removeLanguage(lang)" value="delete">
+                  </div>
+                </div>
+              </div>
+              <div class="carousel-item">
+                <div class="test">
+                  <h1 onclick="someFunc(this)" varname="skillsTitle">skills</h1>
+                  <button @click="addSkill" class="btn btn-primary" >Add Skill</button>
+                  <div v-for="(skill, index) in skills">
+                    <form-group :class="'skill' + index" v-model="skill.value"></form-group>
+                    <input type="button" class="btn btn-danger" @click="removeSkill(skill)" value="delete">
+                  </div>
+                </div>
+              </div>
+              <div class="carousel-item">
+                <div class="test">
+                  <h1 onclick="someFunc(this)" varname="personalitiesTitle">personalities</h1>
+                  <button @click="addPersonality" class="btn btn-primary" >Add personality</button>
+                  <div v-for="(per, index) in personalities">
+                    <form-group :class="'per' + index" v-model="per.value"></form-group>
+                    <input type="button" class="btn btn-danger" @click="removePersonality(per)" value="delete">
+                  </div>
+                </div>
+              </div>
+              <div class="carousel-item">
+                <div class="test">
+                  <h1 onclick="someFunc(this)" varname="softSkillsTitle">Soft Skills</h1>
+                  <button @click="addSoftSkill" class="btn btn-primary">Add Soft Skill</button>
+                  <div v-for="softskill in softskills">
+                      <form-group :name="'Soft skill'" v-model="softskill.skill"></form-group>
+                      <form-group :name="'value'" v-model="softskill.level"></form-group>
+                  </div>
+                </div>
+              </div>
+              <div class="carousel-item">
+                  <div class="test">
+                    <h1 onclick="someFunc(this)" varname="certificatesTitle">certificates</h1>
+                    <button @click="addCer" class="btn btn-primary" >Add certificate</button>
+                    <div v-for="(cert, index) in certificates">
+                      <form-group :class="'cert' + index" v-model="cert.cer"></form-group>
+                      <input type="button" class="btn btn-danger" @click="removeCer(cert)" value="delete">
+                    </div>
+                  </div>
+                </div>
+            </div>
+            <a class="carousel-control-next" href="#carouselExampleControls" role="button" data-slide="next">
+              <span class="carousel-control-next-icon" aria-hidden="true"></span>
+              <span class="sr-only">Next</span>
+            </a>
+          </div>
+    </div>
+
+
+
+
+
+
+
+
+    <div class="cvbody" id="cvbody">
+      <div class="top-line"></div>
+
+      <div class="header container-fluid">
+        <div class="row">
+          <div class="col-md-7 personal">
+            <div class="img">
+              <img src="pics/56468193_2258994747694174_6472742480755294208_n.jpg" alt="">
+            </div>
+            <div class="name">
+              <h4>{{ firstname }}  {{ lastname }}</h4>
+              <div class="profile">
+                <h6>{{profile}}</h6>
+                <p>{{ summary }}</p>
+              </div>
+            </div>
+          </div>
+          <div class="col-md-5 info bg-grey">
+            <basic-info 
+              :address="address"
+              :birthday="birthday"
+              :phone="phone"
+              :email="email"
+              :title="informationTitle"
+            ></basic-info>
+          </div>
+        </div>
+      </div>
+      <div class="container-fluid paragraphs">
+        <div class="row">
+          <div class="col-6 left">
+            <div class="para">
+              <edu-work :obj="educations" :name="educationTitle"></edu-work>
+            </div>
+            <div class="para">
+              <edu-work :obj="works" :name="workTitle"></edu-work>
+            </div>
+            <div class="para">
+              <div class="title"><h6>{{languagesTitle}}</h6></div>
+              <ul class="no-style">
+                <li v-for="lang in languages">
+                  <span>{{lang.name}} </span><span style="float: right; margin-right: 20px;">{{lang.value}}</span>
+                </li>
+              </ul>
+            </div>
+            <div class="para">
+              <div class="title"><h6>Links</h6></div>
+              <ul class="no-style text-center">
+                <li style="display: inline-block; margin: 10px;">
+                  <div>
+                  <i class="fab fa-bitbucket fa-3x" style=" color: violet"></i>
+                  <div><b>Bitbucket</b></div>
+                  <div>joker16</div>
+                </div>
+                </li>
+                <li style="display: inline-block; margin: 10px;">
+                  <div>
+                  <i class="fab fa-github fa-3x"  style=" color: grey"></i>
+                  <div><b>Github</b></div>
+                  <div>ib444</div>
+                </div>
+                </li>
+                <li style="display: inline-block; margin: 10px;">
+                  <div>
+                  <i class="fab fa-jsfiddle fa-3x" style=" color: blue"></i>
+                  <div><b>jsFiddle</b></div>
+                  <div>ib444</div>
+                </div>
+                </li>
+              </ul>
+            </div>
+          </div>
+          <div class="col-6 right">
+              <div class="para">
+                <div class="title"><h6>{{skillsTitle}}</h6></div>
+                  <div class="exp">
+                      <ul class="no-style">
+                          <li  v-for="skill in skills"><i class="fa fa-check"></i> {{ skill.value }}</li>
+                        </ul>
+                  </div>
+              </div>
+              <div class="para">
+                <div class="title"><h6>{{personalitiesTitle}}</h6></div>
+                <div class="exp">
+                    <div class="personalities">
+                        <div v-for="per in personalities">{{ per.value }}</div>
+                    </div>
+                </div>
+              </div>
+              <div class="para">
+                <div class="title"><h6>{{softSkillsTitle}}</h6></div>
+                <div class="exp">
+                    <div v-for="sk in softskills">
+                        <div class="skill">
+                            <span>{{ sk.skill }}</span> <span class="level"></span>
+                          </div><br>
+                    </div>
+                </div>
+              </div>
+              <div class="para">
+                <div class="title"><h6>{{certificatesTitle}}</h6></div>
+                <div class="exp">
+                  <ul>
+                    <li v-for="cer in certificates"> {{ cer.cer }} </li>
+                  </ul>
+                </div>
+              </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="bottom-line"></div>
+    </div>
+</div>
+<!-- ****************************************** -->
+
+<!-- ****************************************** -->
+
+<button on  onclick="capt()" >html2canvas</button>
+<script src="js/html2canvas.js"></script>
+<script>
+    function capt() {
+        var cv = document.getElementById("cvbody");
+        
+        html2canvas(cv).then(canvas => {
+            document.body.appendChild(canvas)
+        });
+    }
+</script>
+    <script src="js/jquery-3.4.1.min.js"></script>
+    <script src="js/bootstrap.min.js"></script>
+    <script src="js/vue.js"></script>
+    <script src="js/main.js" ></script>
+  </body>
+</html>
