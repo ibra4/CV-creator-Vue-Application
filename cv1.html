@@ -9,7 +9,7 @@
     <link rel="stylesheet" href="css/bootstrap.min.css">
     <link rel="stylesheet" type="text/css" href="css/cv1.css">
   </head>
-  <body>
+  <body>ss
 <div id="app">
   
     <div class="cvinput">
@@ -117,8 +117,6 @@
                   </div>
                 </div>
             </div>
-            <button @click="showDiv" >add Custom Section</button>
-            <floating-div v-if="floatingDiv"></floating-div>
             <a class="carousel-control-next" href="#carouselExampleControls" role="button" data-slide="next">
               <span class="carousel-control-next-icon" aria-hidden="true"></span>
               <span class="sr-only">Next</span>
@@ -175,6 +173,32 @@
               <ul class="no-style">
                 <li v-for="lang in languages">
                   <span>{{lang.name}} </span><span style="float: right; margin-right: 20px;">{{lang.value}}</span>
+                </li>
+              </ul>
+            </div>
+            <div class="para">
+              <div class="title"><h6>Links</h6></div>
+              <ul class="no-style text-center">
+                <li style="display: inline-block; margin: 10px;">
+                  <div>
+                  <i class="fab fa-bitbucket fa-3x" style=" color: violet"></i>
+                  <div><b>Bitbucket</b></div>
+                  <div>joker16</div>
+                </div>
+                </li>
+                <li style="display: inline-block; margin: 10px;">
+                  <div>
+                  <i class="fab fa-github fa-3x"  style=" color: grey"></i>
+                  <div><b>Github</b></div>
+                  <div>ib444</div>
+                </div>
+                </li>
+                <li style="display: inline-block; margin: 10px;">
+                  <div>
+                  <i class="fab fa-jsfiddle fa-3x" style=" color: blue"></i>
+                  <div><b>jsFiddle</b></div>
+                  <div>ib444</div>
+                </div>
                 </li>
               </ul>
             </div>
