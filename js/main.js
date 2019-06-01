@@ -1,3 +1,48 @@
+Vue.component('floating-div', {
+    data : function() {
+        return {
+            selectSection : "",
+            sectionName   : ""
+        }
+    },
+    template : `
+    <div>
+        <div class="floating-div" >
+            <div class="esc">x</div>
+            <div class="container text-center"><h5>* New Section</h5></div>
+            
+                <div class="form-group">
+                    <label for="as">Section Title</label>
+                    <input class="form-control" v-model="sectionName" type="text" id="as">
+                </div>
+                <div class="form-group">
+                    <label for="exampleFormControlSelect1">Choose Section Type</label>
+                    <select class="form-control" v-model="selectSection">
+                        <option>Paragraph Only</option>
+                        <option>Paragraph and List</option>
+                        <option>List Only</option>
+                    </select>
+                </div> 
+                <button @click="addSection(selectSection)" type="submit" class="btn btn-primary">Add This Section</button>               
+            
+        </div>
+    </div>
+    `,
+    watch : {
+        selectSection(val) {
+            this.$emit('input', val)
+        },
+        sectionName(val) {
+            this.$emit('input', val)
+        }
+    },
+    methods : {
+        addSection : function(sectionName, selectSection) {
+            Vue.set(app.someObject, 'b', 2)
+        }
+    }
+})
+
 Vue.component('basic-info', {
     props : ["address", "birthday", "phone", "email", "title"],
     template : `
@@ -86,7 +131,8 @@ var app = new Vue({
         softSkillsTitle     : 'soft skills',
         certificatesTitle   : 'certificates',
         informationTitle    : 'personal information',
-        languagesTitle      : 'Languages'
+        languagesTitle      : 'Languages',
+        floatingDiv : false
 
     },
     methods : {
@@ -168,6 +214,12 @@ var app = new Vue({
           },
           removeImage: function (e) {
             this.image = '';
+          },
+          showDiv : function() {
+              this.floatingDiv = true;
+          },
+          addSection : function() {
+              console.log('das');
           }
     }
 });
