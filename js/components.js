@@ -32,7 +32,7 @@ Vue.component('floating-div', {
                         <option>List Only</option>
                     </select>
                 </div> 
-                <button class="btn btn-primary">Add This Section</button>               
+                <button @click="createSection(sectionName, sectionLocation, selectSection)" class="btn btn-primary">Add This Section</button>               
             
         </div>
     </div>
@@ -49,11 +49,17 @@ Vue.component('floating-div', {
         }
     },
     methods : {
-        addSection : function() {
-
-        },
         closeSectionDialog : function() {
             app.floatingDiv = false;
+        },
+        createSection : function(name, location, listp) {
+            // We must add Objects inside customSection Array
+            app.addCustomSection(name, location, listp);
+            // app.customSection.push({
+            //     'name' : name,
+            //     'location' : location,
+            //     'listp' : listp
+            // });
         }
     },
     computed : {
@@ -123,4 +129,11 @@ Vue.component('basic-info', {
     `
 })
 
-
+Vue.component('onlyPara', {
+    props : ['varName'],
+    template : `
+    <div>
+        <form-group></form-group>
+    </div>
+    `
+})

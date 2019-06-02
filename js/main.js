@@ -1,3 +1,4 @@
+
 var app = new Vue({
     el : '#app',
     data : {
@@ -16,7 +17,9 @@ var app = new Vue({
         personalities   : [{value : 'block 1'}, {value : 'block 2'}, {value : 'block 3'}],
         certificates    : [{ cert : 'certificates' }],
         languages       : [{ name : 'english', value : 'good' }],
-        customSections  : [],
+        customSections  : [
+
+        ],
         cons            : '',
         spec            : '',
         startY          : '',
@@ -120,11 +123,18 @@ var app = new Vue({
           showDiv : function() {
               this.floatingDiv = true;
           },
-          addSection : function() {
-              console.log('das');
+          addCustomSection : function() {
+              this.customSections.push({
+                name : ''
+              });
           }
     }
 });
+
+// var abjC = {
+//     title : '',
+
+// };
 
 
 // editable
@@ -152,6 +162,9 @@ function someFunc(elem) {
         app[varname] = text;
     });
 }
+
+
+
 // JQuery
 window.onload = function() {
     var fDiv = document.getElementById('floating_div');
