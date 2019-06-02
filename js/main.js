@@ -8,7 +8,7 @@ Vue.component('floating-div', {
     template : `
     <div>
         <div class="floating-div" >
-            <div class="esc">x</div>
+            <button @click="closeSectionDialog" class="esc btn btn-danger">close</button>
             <div class="container text-center"><h5>* New Section</h5></div>
             
                 <div class="form-group">
@@ -23,7 +23,7 @@ Vue.component('floating-div', {
                         <option>List Only</option>
                     </select>
                 </div> 
-                <button @click="addSection(selectSection)" type="submit" class="btn btn-primary">Add This Section</button>               
+                <button @click="addSection" class="btn btn-primary">Add This Section</button>               
             
         </div>
     </div>
@@ -37,8 +37,11 @@ Vue.component('floating-div', {
         }
     },
     methods : {
-        addSection : function(sectionName, selectSection) {
-            Vue.set(app.someObject, 'b', 2)
+        addSection : function() {
+
+        },
+        closeSectionDialog : function() {
+            app.floatingDiv = false;
         }
     }
 })
@@ -117,6 +120,7 @@ var app = new Vue({
         personalities   : [{value : 'block 1'}, {value : 'block 2'}, {value : 'block 3'}],
         certificates    : [{ cert : 'certificates' }],
         languages       : [{ name : 'english', value : 'good' }],
+        customSections  : [],
         cons            : '',
         spec            : '',
         startY          : '',
@@ -132,6 +136,7 @@ var app = new Vue({
         certificatesTitle   : 'certificates',
         informationTitle    : 'personal information',
         languagesTitle      : 'Languages',
+        
         floatingDiv : false
 
     },
