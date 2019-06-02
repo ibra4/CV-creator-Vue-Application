@@ -1,12 +1,14 @@
 Vue.component('floating-div', {
     data : function() {
         return {
-            selectSection : "",
-            sectionName   : ""
+            selectSection   : "",
+            sectionName     : "",
+            sectionLocation : "",
+            sections        : []
         }
     },
     template : `
-    <div>
+    <div id="floating_div">
         <div class="floating-div" >
             <button @click="closeSectionDialog" class="esc btn btn-danger">close</button>
             <div class="container text-center"><h5>* New Section</h5></div>
@@ -15,6 +17,13 @@ Vue.component('floating-div', {
                     <label for="as">Section Title</label>
                     <input class="form-control" v-model="sectionName" type="text" id="as">
                 </div>
+
+                <div class="form-group">
+                    <label for="sectionLocation">Section will displayed before</label>
+                    <select class="form-control" v-model="sectionLocation">
+                        <option v-for="sec in getSections">{{sec}}</option>
+                    </select>
+                </div> 
                 <div class="form-group">
                     <label for="exampleFormControlSelect1">Choose Section Type</label>
                     <select class="form-control" v-model="selectSection">
@@ -23,7 +32,7 @@ Vue.component('floating-div', {
                         <option>List Only</option>
                     </select>
                 </div> 
-                <button @click="addSection" class="btn btn-primary">Add This Section</button>               
+                <button class="btn btn-primary">Add This Section</button>               
             
         </div>
     </div>
@@ -34,6 +43,9 @@ Vue.component('floating-div', {
         },
         sectionName(val) {
             this.$emit('input', val)
+        },
+        sectionLocation(val) {
+            this.$emit('input', val)
         }
     },
     methods : {
@@ -42,6 +54,16 @@ Vue.component('floating-div', {
         },
         closeSectionDialog : function() {
             app.floatingDiv = false;
+        }
+    },
+    computed : {
+        getSections : function() {
+            var el = document.querySelectorAll('.para .title');
+            var sections = [];
+            el.forEach(function(val, index) {
+                sections[index] = val.innerText;
+            });
+            return sections;
         }
     }
 })
@@ -254,5 +276,18 @@ function someFunc(elem) {
         elem.innerText = text;
         app[varname] = text;
     });
-
+}
+// JQuery
+window.onload = function() {
+    var fDiv = document.getElementById('floating_div');
+    $("body").click(function(e) {
+        if (e.target.id !== "floating_div" && !$(e.target).parents("#floating_div").length && app.floatingDiv == true && e.target.id != 'addsec') {
+          console.log("Outside div");
+          console.log(app.floatingDiv);
+          app.floatingDiv = false;
+        //   if (app.floatingDiv == true) {app.floatingDiv = false}
+        } else {
+          console.log("what");
+        }
+      });
 }
