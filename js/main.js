@@ -1,4 +1,11 @@
-
+var onlyPara = {
+    props: ['varname'],
+    template : `
+    <div>
+        <form-group></form-group>
+    </div>
+    `
+}
 var app = new Vue({
     el : '#app',
     data : {
@@ -17,9 +24,7 @@ var app = new Vue({
         personalities   : [{value : 'block 1'}, {value : 'block 2'}, {value : 'block 3'}],
         certificates    : [{ cert : 'certificates' }],
         languages       : [{ name : 'english', value : 'good' }],
-        customSections  : [
 
-        ],
         cons            : '',
         spec            : '',
         startY          : '',
@@ -35,9 +40,11 @@ var app = new Vue({
         certificatesTitle   : 'certificates',
         informationTitle    : 'personal information',
         languagesTitle      : 'Languages',
-        
-        // Display/Hide Floating div of new section adding
-        floatingDiv : false
+
+        sections            : [],
+        sectionName         : '',
+        sectionLocation     : '',
+        sectionStructure    : ''
 
     },
     methods : {
@@ -119,14 +126,6 @@ var app = new Vue({
           },
           removeImage: function (e) {
             this.image = '';
-          },
-          showDiv : function() {
-              this.floatingDiv = true;
-          },
-          addCustomSection : function() {
-              this.customSections.push({
-                name : ''
-              });
           }
     }
 });
@@ -163,19 +162,34 @@ function someFunc(elem) {
     });
 }
 
+const floatingDiv = document.getElementById('floating-div');
+const iputElement = document.getElementById('carousel-inner');
+
+function showDiv() {
+    // get Sections
+    // var currentSections = document.querySelectorAll('.para .title');
+    const sections = [];
+    document.querySelectorAll('.para .title').forEach(function(sec, index) {
+        sections[index] = sec.innerText;
+        app.sections.push('`' + sec.innerText.toLowerCase() + '`');
+    })
+    floatingDiv.style.display = 'block';
+}
+
+function constructSection(sectionName, sectionLocation, sectionStructure) {
+    let div = document.createElement('div');
+    div.className = "carousel-item"; //#end here
+}
 
 
 // JQuery
 window.onload = function() {
-    var fDiv = document.getElementById('floating_div');
     $("body").click(function(e) {
-        if (e.target.id !== "floating_div" && !$(e.target).parents("#floating_div").length && app.floatingDiv == true && e.target.id != 'addsec') {
-          console.log("Outside div");
-          console.log(app.floatingDiv);
-          app.floatingDiv = false;
-        //   if (app.floatingDiv == true) {app.floatingDiv = false}
+        if ((e.target.id != "floating-div" && !$(e.target).parents("#floating-div").length) && e.target.id != 'addsec') {
+            console.log('outside');
+            floatingDiv.style.display = 'none';
         } else {
-          console.log("what");
+          console.log('inside');
         }
       });
 }

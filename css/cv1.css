@@ -167,11 +167,5 @@ i.icon {
     background-color: #9a12b3;
     color: white;
     padding: 50px;
-}
-.floating-div ul {list-style: none;}
-.floating-div .esc {
-    position: absolute;
-    top: 5px;
-    right: 15px;
-    font-size: 25px;
+    display: none;
 }
