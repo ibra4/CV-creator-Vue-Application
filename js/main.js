@@ -162,23 +162,37 @@ function someFunc(elem) {
     });
 }
 
-const floatingDiv = document.getElementById('floating-div');
-const iputElement = document.getElementById('carousel-inner');
+const floatingDiv   = document.getElementById('floating-div');
+const inputElement  = document.getElementById('carousel-inner');
+
+// elements creation 
+const div           = document.createElement('div');
+const span          = document.createElement('span');
 
 function showDiv() {
-    // get Sections
-    // var currentSections = document.querySelectorAll('.para .title');
     const sections = [];
     document.querySelectorAll('.para .title').forEach(function(sec, index) {
-        sections[index] = sec.innerText;
-        app.sections.push('`' + sec.innerText.toLowerCase() + '`');
+        app.sections.push(sec.innerText.toLowerCase());
     })
     floatingDiv.style.display = 'block';
 }
 
 function constructSection(sectionName, sectionLocation, sectionStructure) {
-    let div = document.createElement('div');
-    div.className = "carousel-item"; //#end here
+    var sectionNameVariable = (sectionName.includes(' ')) ? sectionName.replace(' ', '_') : sectionName;
+    // var sectionName = sectionName;
+    let secLoc = sectionLocation.replace('after ', '');
+    let inputIndex = app.sections.indexOf(secLoc);
+    let sec = `
+    <div class="carousel-item">
+      <div class="test">
+          <h1 onclick="someFunc(this)" varname="${sectionNameVariable}">${sectionName} </h1>
+          <div class="form-group">
+            <textarea id="summary" cols="50" rows="5" v-model="summary"></textarea>
+          </div>
+      </div>
+    </div>
+    `;
+    alert(sec);
 }
 
 
