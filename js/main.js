@@ -41,6 +41,7 @@ var app = new Vue({
         informationTitle    : 'personal information',
         languagesTitle      : 'Languages',
 
+        showDiv             : false,
         sections            : [],
         sectionName         : '',
         sectionLocation     : '',
@@ -170,11 +171,11 @@ const div           = document.createElement('div');
 const span          = document.createElement('span');
 
 function showDiv() {
-    const sections = [];
     document.querySelectorAll('.para .title').forEach(function(sec, index) {
         app.sections.push(sec.innerText.toLowerCase());
     })
     floatingDiv.style.display = 'block';
+    app.showDiv = true;
 }
 
 function constructSection(sectionName, sectionLocation, sectionStructure) {
@@ -184,7 +185,7 @@ function constructSection(sectionName, sectionLocation, sectionStructure) {
     let inputIndex = app.sections.indexOf(secLoc);
     let sec = `
     <div class="carousel-item">
-      <div class="test">
+      <div class="test" id="section_${sectionNameVariable}">
           <h1 onclick="someFunc(this)" varname="${sectionNameVariable}">${sectionName} </h1>
           <div class="form-group">
             <textarea id="summary" cols="50" rows="5" v-model="summary"></textarea>
@@ -192,7 +193,7 @@ function constructSection(sectionName, sectionLocation, sectionStructure) {
       </div>
     </div>
     `;
-    alert(sec);
+    // var htmlObj = $(sec);
 }
 
 
@@ -202,6 +203,11 @@ window.onload = function() {
         if ((e.target.id != "floating-div" && !$(e.target).parents("#floating-div").length) && e.target.id != 'addsec') {
             console.log('outside');
             floatingDiv.style.display = 'none';
+            app.sections            = [];
+            app.sectionName         = "";
+            app.sectionLocation     = "";
+            app.sectionStructure    = "";
+            app.showDiv             = false;
         } else {
           console.log('inside');
         }
