@@ -18,7 +18,15 @@ Vue.component('form-group', {
         }
     }
 })
+var s = new Vue({
+  el : "appas",
+  methods : {
+    he
+  },
+  methods : {
 
+  }
+})
 Vue.component('edu-work', {
     props : ["name", "obj"],
     template: `<div>
