@@ -14,7 +14,7 @@
   <!-- floatingDiv -->
 
 <div id="floating-div" class="floating-div">
-  <form-group name="section name" v-model="sectionName" :var-name="sectionName"></form-group>
+  <form-group :name="'section name'" v-model="sectionName" :var-name="'sectionName'"></form-group>
   <div class="form-group">
     <label for="sectionList">Location Of Section</label>
     <select class="form-control" v-model="sectionLocation" id="sectionList">
@@ -143,7 +143,7 @@
                   </div>
                 </div>
             </div>
-            <button onclick="showDiv()" id="addsec">add Custom Section</button>
+            <button v-if="!showDiv" onclick="showDiv()" id="addsec">add Custom Section</button>
             
             <a class="carousel-control-next" href="#carouselExampleControls" role="button" data-slide="next">
               <span class="carousel-control-next-icon" aria-hidden="true"></span>
