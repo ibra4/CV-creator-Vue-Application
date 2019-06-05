@@ -17,16 +17,7 @@ Vue.component('form-group', {
             this.$emit('input', val)
         }
     }
-})
-var s = new Vue({
-  el : "appas",
-  methods : {
-    he
-  },
-  methods : {
-
-  }
-})
+});
 Vue.component('edu-work', {
     props : ["name", "obj"],
     template: `<div>
@@ -40,7 +31,7 @@ Vue.component('edu-work', {
           </div>
       </div>
     </div>`
-})
+});
 Vue.component('basic-info', {
     props : ["address", "birthday", "phone", "email", "title"],
     template : `
@@ -60,4 +51,4 @@ Vue.component('basic-info', {
       </div>
     </div>
     `
-})
+});

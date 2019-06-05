@@ -187,13 +187,29 @@ function constructSection(sectionName, sectionLocation, sectionStructure) {
     <div class="carousel-item">
       <div class="test" id="section_${sectionNameVariable}">
           <h1 onclick="someFunc(this)" varname="${sectionNameVariable}">${sectionName} </h1>
-          <div class="form-group">
-            <textarea id="summary" cols="50" rows="5" v-model="summary"></textarea>
-          </div>
+          
       </div>
     </div>
     `;
-    // var htmlObj = $(sec);
+    var htmlObj = $(sec);
+    // console.log(htmlObj);
+    let childNode = '';
+    switch (sectionStructure) {
+        case 'paragraph only' :
+            alert('das');
+            childNode = `
+            <div class="form-group">
+              <textarea id="${sectionNameVariable}" cols="50" rows="5" v-model="${sectionNameVariable}"></textarea>
+            </div>
+            `;
+            break;
+        case 'list only' :
+            break;
+        case 'list & paragraph' :
+            break;
+    }
+    htmlObj.find('.test').append(childNode);
+    inputElement.insertBefore(htmlObj[0], inputElement.children[inputIndex]);
 }
 
 
@@ -201,7 +217,7 @@ function constructSection(sectionName, sectionLocation, sectionStructure) {
 window.onload = function() {
     $("body").click(function(e) {
         if ((e.target.id != "floating-div" && !$(e.target).parents("#floating-div").length) && e.target.id != 'addsec') {
-            console.log('outside');
+            // console.log('outside');
             floatingDiv.style.display = 'none';
             app.sections            = [];
             app.sectionName         = "";
@@ -209,7 +225,7 @@ window.onload = function() {
             app.sectionStructure    = "";
             app.showDiv             = false;
         } else {
-          console.log('inside');
+        //   console.log('inside');
         }
       });
 }
