@@ -1,11 +1,3 @@
-var onlyPara = {
-    props: ['varname'],
-    template : `
-    <div>
-        <form-group></form-group>
-    </div>
-    `
-}
 var app = new Vue({
     el : '#app',
     data : {
@@ -45,7 +37,9 @@ var app = new Vue({
         sections            : [],
         sectionName         : '',
         sectionLocation     : '',
-        sectionStructure    : ''
+        sectionStructure    : '',
+
+        newSection : {}
 
     },
     methods : {
@@ -178,40 +172,6 @@ function showDiv() {
     app.showDiv = true;
 }
 
-function constructSection(sectionName, sectionLocation, sectionStructure) {
-    var sectionNameVariable = (sectionName.includes(' ')) ? sectionName.replace(' ', '_') : sectionName;
-    // var sectionName = sectionName;
-    let secLoc = sectionLocation.replace('after ', '');
-    let inputIndex = app.sections.indexOf(secLoc);
-    let sec = `
-    <div class="carousel-item">
-      <div class="test" id="section_${sectionNameVariable}">
-          <h1 onclick="someFunc(this)" varname="${sectionNameVariable}">${sectionName} </h1>
-          
-      </div>
-    </div>
-    `;
-    var htmlObj = $(sec);
-    // console.log(htmlObj);
-    let childNode = '';
-    switch (sectionStructure) {
-        case 'paragraph only' :
-            alert('das');
-            childNode = `
-            <div class="form-group">
-              <textarea id="${sectionNameVariable}" cols="50" rows="5" v-model="${sectionNameVariable}"></textarea>
-            </div>
-            `;
-            break;
-        case 'list only' :
-            break;
-        case 'list & paragraph' :
-            break;
-    }
-    htmlObj.find('.test').append(childNode);
-    inputElement.insertBefore(htmlObj[0], inputElement.children[inputIndex]);
-}
-
 
 // JQuery
 window.onload = function() {
@@ -219,11 +179,12 @@ window.onload = function() {
         if ((e.target.id != "floating-div" && !$(e.target).parents("#floating-div").length) && e.target.id != 'addsec') {
             // console.log('outside');
             floatingDiv.style.display = 'none';
-            app.sections            = [];
-            app.sectionName         = "";
-            app.sectionLocation     = "";
-            app.sectionStructure    = "";
-            app.showDiv             = false;
+            app.showDiv = false;
+            // app.sections            = [];
+            // app.sectionName         = "";
+            // app.sectionLocation     = "";
+            // app.sectionStructure    = "";
+            // app.showDiv             = false;
         } else {
         //   console.log('inside');
         }

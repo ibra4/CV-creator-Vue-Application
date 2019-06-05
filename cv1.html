@@ -138,7 +138,7 @@
                     <button @click="addCer" class="btn btn-primary" >Add certificate</button>
                     <div v-for="(cert, index) in certificates">
                       <form-group :class="'cert' + index" v-model="cert.cer"></form-group>
-                      <input type="button" class="btn btn-danger" @click="removeCer(cert)" value="delete">
+                      <!-- <input type="button" class="btn btn-danger" @click="removeCer(cert)" value="delete"> -->
                     </div>
                   </div>
                 </div>
