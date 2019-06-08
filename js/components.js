@@ -3,7 +3,7 @@ Vue.component('paraCvSection', {
     template : `
     <div class="para">
         <div class="title"><h6>{{ name }}</h6></div>
-        <div class="exp"><p> {{ content }} </p></div>
+        <div class="exp"> {{ content }} </div>
     </div>
     `
 });
@@ -28,38 +28,52 @@ Vue.component('para-section', {
         }
     }
 });
+Vue.component('listCvSection', {
+    props : ['name', 'content'],
+    template : `
+    <div class="para">
+        <div class="title"><h6>{{ name }}</h6></div>
+        <div class="exp">
+            <ul>
+                <li v-for="con in content">{{ con.val }}</li>
+            </ul>
+        </div>
+    </div>
+    `
+});
 // Not Ready
-Vue.component('paraAndList-section', {
-    props : ['title', 'name'],
+Vue.component('list-section', {
+    props : ['name', 'varName'],
     data : function() {
         return {
             inputVal : {val : this.value},
+            myList : [{val : ''}],
+            sss : '',
+            counter : 0
         }
     },
     template : `
     <div class="test">
         <h1 varname="title">{{ name }} </h1>
-        <div class="form-group">
-          <div class="form-group">
-            <input type="text" class="form-control" v-model="inputVal.val"></input>
-          </div>
-          <button class="btn btn-primary" @click="methodName">add {{ name }}</button>
+        <button @click="addNew" class="btn btn-primary" style="float: right; margin-right:50px;">Add {{ name }}</button>
+        <div v-for="l in myList">
+            <div class="form-group">
+                <input type="text" class="form-control" v-model="l.val">
+            </div>
         </div>
     </div>
     `,
-    computed : {
-        methodName : function() {
-            return "add" + name;
-        }
-    },
-    watch : {
-        inputVal(val) {
-            this.$emit('input', val)
+    methods : {
+        addNew() {
+            // alert(this.varName);
+            this.myList.push({val : ''});
+            this.$parent.newSection[this.varName].push(this.myList[this.counter]);
+            this.counter++;
         }
     }
 });
 // Not Ready
-Vue.component('List-section', {
+Vue.component('paraAndList-section', {
     props : ['title'],
     data : function() {
         return {

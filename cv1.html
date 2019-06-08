@@ -41,6 +41,7 @@
     <div class="cvinput">
         <div id="carouselExampleControls" class="carousel slide" data-ride="carousel" data-interval="false">
             <div class="carousel-inner" id="carousel-inner">
+              
               <div class="carousel-item active">
                 <div class="test">
                   <h1 onclick="someFunc(this)" varname="informationTitle">Personal Information</h1>
@@ -55,6 +56,17 @@
                   </div>
                 </div>
               </div>
+              <div v-if="inputSections.length > 0" class="carousel-item">
+                  <keep-alive v-for="sec in inputSections" v-bind:key="sec.id">
+                    <component 
+                    v-bind:is="sec.componentName"
+                    :name="sec.sectionName"
+                    :var-name="sec.sectionVar"
+                    v-model="newSection[sec.sectionVar]"
+                    ></component>
+                    <!-- {{sectionVar}} -->
+                  </keep-alive> 
+                </div>
               <div class="carousel-item">
                 <div class="test">
                     <h1 onclick="someFunc(this)" varname="profile">Profile </h1>
@@ -143,17 +155,7 @@
                   </div>
                 </div>
 
-                <div v-if="inputSections.length > 0" class="carousel-item">
-                  <keep-alive v-for="sec in inputSections" v-bind:key="sec.id">
-                    <component 
-                    v-bind:is="sec.componentName"
-                    :name="sec.sectionName"
-                    :var-name="sec.sectionVar"
-                    v-model="newSection[sec.sectionVar]"
-                    ></component>
-                    <!-- {{sectionVar}} -->
-                  </keep-alive> 
-                </div>
+                
             
               </div>
             <button v-if="!showDiv" onclick="showDiv()" id="addsec">add Custom Section</button>

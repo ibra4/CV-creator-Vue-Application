@@ -130,7 +130,6 @@ var app = new Vue({
           if (!this.sections.includes(this.sectionName)) {
               this.sections.push(this.sectionName);
               let componentName = '';
-              let inputText;
               sectionVar = this.sectionVar = this.sectionName.replace(" ", "_");
               sectionLocation = this.sectionLocation;
               sectionName = this.sectionName;
@@ -147,30 +146,22 @@ var app = new Vue({
                         componentName   = 'list-section';
                         cvCompName      = 'listCvSection';
                       break;
-                
               }
               if (this.sectionStructure == 'paragraph only') {
                 Vue.set(this.newSection, [sectionVar], '');
+              } else if(this.sectionStructure == 'list & paragraph') {
+                Vue.set(this.newSection, [sectionVar], '');
+                Vue.set(this.newSection, [sectionVar], []);
               } else {
                 Vue.set(this.newSection, [sectionVar], []);
               }
               this.inputSections.push({componentName, cvCompName, sectionName, sectionVar, sectionLocation});
-            //   this.constructCVElement(sectionName, sectionLocation);
           } else {
               alert(this.sectionName + 'Already Exists');
           }
-        },
-        constructCVElement : function(sectionName, sectionLocation) {
-
         }
     }
 });
-
-// var abjC = {
-//     title : '',
-
-// };
-
 
 // editable
 function someFunc(elem) {
@@ -213,23 +204,19 @@ function showDiv() {
 }
 
 
-// JQuery
+// JQuery click listener
 window.onload = function() {
     $("body").click(function(e) {
         if ((e.target.id != "floating-div" && !$(e.target).parents("#floating-div").length) && e.target.id != 'addsec') {
             // console.log('outside');
             floatingDiv.style.display = 'none';
             app.showDiv = false;
-            // app.sections            = [];
-            // app.sectionName         = "";
-            // app.sectionLocation     = "";
-            // app.sectionStructure    = "";
-            // app.showDiv             = false;
+            app.sections            = [];
+            app.sectionName         = "";
+            app.sectionLocation     = "";
+            app.sectionStructure    = "";
         } else {
         //   console.log('inside');
         }
-      });
-      $('#textNewLine').on('change', function() {
-        alert('e');
       });
 }
