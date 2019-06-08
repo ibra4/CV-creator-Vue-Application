@@ -1,3 +1,4 @@
+const cvElements  = document.getElementById('paragraphs');
 var app = new Vue({
     el : '#app',
     data : {
@@ -35,9 +36,12 @@ var app = new Vue({
 
         showDiv             : false,
         sections            : [],
+        inputSections       : [],
         sectionName         : '',
         sectionLocation     : '',
         sectionStructure    : '',
+        sectionVar          : '',
+        cvSections          : [],
 
         newSection : {}
 
@@ -108,20 +112,57 @@ var app = new Vue({
             if (!files.length)
               return;
             this.createImage(files[0]);
-          },
-          createImage(file) {
-            var image = new Image();
-            var reader = new FileReader();
-            var vm = this;
-      
-            reader.onload = (e) => {
-              vm.image = e.target.result;
-            };
-            reader.readAsDataURL(file);
-          },
-          removeImage: function (e) {
-            this.image = '';
+        },
+        createImage(file) {
+          var image = new Image();
+          var reader = new FileReader();
+          var vm = this;
+    
+          reader.onload = (e) => {
+            vm.image = e.target.result;
+          };
+          reader.readAsDataURL(file);
+        },
+        removeImage: function (e) {
+          this.image = '';
+        },
+        addSection : function() {
+          if (!this.sections.includes(this.sectionName)) {
+              this.sections.push(this.sectionName);
+              let componentName = '';
+              let inputText;
+              sectionVar = this.sectionVar = this.sectionName.replace(" ", "_");
+              sectionLocation = this.sectionLocation;
+              sectionName = this.sectionName;
+              switch(this.sectionStructure) {
+                  case 'paragraph only' :
+                        componentName   = 'para-section';
+                        cvCompName      = 'paraCvSection'
+                      break;
+                  case 'list & paragraph' :
+                        componentName   = 'paraAndList-section';
+                        cvCompName      = 'paraAndListCvSection';
+                      break;
+                  case 'list only' :
+                        componentName   = 'list-section';
+                        cvCompName      = 'listCvSection';
+                      break;
+                
+              }
+              if (this.sectionStructure == 'paragraph only') {
+                Vue.set(this.newSection, [sectionVar], '');
+              } else {
+                Vue.set(this.newSection, [sectionVar], []);
+              }
+              this.inputSections.push({componentName, cvCompName, sectionName, sectionVar, sectionLocation});
+            //   this.constructCVElement(sectionName, sectionLocation);
+          } else {
+              alert(this.sectionName + 'Already Exists');
           }
+        },
+        constructCVElement : function(sectionName, sectionLocation) {
+
+        }
     }
 });
 
@@ -158,7 +199,6 @@ function someFunc(elem) {
 }
 
 const floatingDiv   = document.getElementById('floating-div');
-const inputElement  = document.getElementById('carousel-inner');
 
 // elements creation 
 const div           = document.createElement('div');
@@ -188,5 +228,8 @@ window.onload = function() {
         } else {
         //   console.log('inside');
         }
+      });
+      $('#textNewLine').on('change', function() {
+        alert('e');
       });
 }

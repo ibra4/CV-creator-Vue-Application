@@ -30,7 +30,7 @@
     </select>
   </div>
   <button 
-   onclick="constructSection(app.sectionName, app.sectionLocation, app.sectionStructure)"
+   @click="addSection"
    type="submit" class="btn btn-primary">
    Add this section</button>
 </div>
@@ -142,7 +142,20 @@
                     </div>
                   </div>
                 </div>
-            </div>
+
+                <div v-if="inputSections.length > 0" class="carousel-item">
+                  <keep-alive v-for="sec in inputSections" v-bind:key="sec.id">
+                    <component 
+                    v-bind:is="sec.componentName"
+                    :name="sec.sectionName"
+                    :var-name="sec.sectionVar"
+                    v-model="newSection[sec.sectionVar]"
+                    ></component>
+                    <!-- {{sectionVar}} -->
+                  </keep-alive> 
+                </div>
+            
+              </div>
             <button v-if="!showDiv" onclick="showDiv()" id="addsec">add Custom Section</button>
             
             <a class="carousel-control-next" href="#carouselExampleControls" role="button" data-slide="next">
@@ -196,6 +209,15 @@
             <div class="para">
               <edu-work :obj="works" :name="workTitle"></edu-work>
             </div>
+            <div v-if="inputSections.length > 0">
+              <keep-alive v-for="sec in inputSections" v-bind:key="sec.id">
+                <component v-if="sec.sectionLocation == 'after work'"
+                v-bind:is="sec.cvCompName"
+                :name="sec.sectionName"
+                :content="newSection[sec.sectionVar]"
+                ></component>
+              </keep-alive>
+            </div>
             <div class="para">
               <div class="title"><h6>{{languagesTitle}}</h6></div>
               <ul class="no-style">
@@ -203,6 +225,15 @@
                   <span>{{lang.name}} </span><span style="float: right; margin-right: 20px;">{{lang.value}}</span>
                 </li>
               </ul>
+            </div>
+            <div v-if="inputSections.length > 0">
+              <keep-alive v-for="sec in inputSections" v-bind:key="sec.id">
+                <component v-if="sec.sectionLocation == 'after languages'"
+                v-bind:is="sec.cvCompName"
+                :name="sec.sectionName"
+                :content="newSection[sec.sectionVar]"
+                ></component>
+              </keep-alive>
             </div>
           </div>
           <div class="col-6 right">
@@ -214,6 +245,15 @@
                         </ul>
                   </div>
               </div>
+              <div v-if="inputSections.length > 0">
+                <keep-alive v-for="sec in inputSections" v-bind:key="sec.id">
+                  <component v-if="sec.sectionLocation == 'after skills'"
+                  v-bind:is="sec.cvCompName"
+                  :name="sec.sectionName"
+                  :content="newSection[sec.sectionVar]"
+                  ></component>
+                </keep-alive>
+              </div>
               <div class="para">
                 <div class="title"><h6>{{personalitiesTitle}}</h6></div>
                 <div class="exp">
@@ -221,6 +261,15 @@
                         <div v-for="per in personalities">{{ per.value }}</div>
                     </div>
                 </div>
+              </div>
+              <div v-if="inputSections.length > 0">
+                <keep-alive v-for="sec in inputSections" v-bind:key="sec.id">
+                  <component v-if="sec.sectionLocation == 'after personalities'"
+                  v-bind:is="sec.cvCompName"
+                  :name="sec.sectionName"
+                  :content="newSection[sec.sectionVar]"
+                  ></component>
+                </keep-alive>
               </div>
               <div class="para">
                 <div class="title"><h6>{{softSkillsTitle}}</h6></div>
@@ -232,6 +281,15 @@
                     </div>
                 </div>
               </div>
+              <div v-if="inputSections.length > 0">
+                <keep-alive v-for="sec in inputSections" v-bind:key="sec.id">
+                  <component v-if="sec.sectionLocation == 'after soft skills'"
+                  v-bind:is="sec.cvCompName"
+                  :name="sec.sectionName"
+                  :content="newSection[sec.sectionVar]"
+                  ></component>
+                </keep-alive>
+              </div>
               <div class="para">
                 <div class="title"><h6>{{certificatesTitle}}</h6></div>
                 <div class="exp">
@@ -239,6 +297,15 @@
                     <li v-for="cer in certificates"> {{ cer.cer }} </li>
                   </ul>
                 </div>
+              </div>
+              <div v-if="inputSections.length > 0">
+                <keep-alive v-for="sec in inputSections" v-bind:key="sec.id">
+                  <component v-if="sec.sectionLocation == 'after certificates'"
+                  v-bind:is="sec.cvCompName"
+                  :name="sec.sectionName"
+                  :content="newSection[sec.sectionVar]"
+                  ></component>
+                </keep-alive>
               </div>
           </div>
         </div>
