@@ -1,5 +1,9 @@
 body {
-    font-family: 'Gugi', cursive;
+    /* font-family: 'Gugi', cursive; */
+    /* font-family: 'Ubuntu', sans-serif; */
+    font-family: 'Source Code Pro', monospace;
+
+
 }
 body * {box-sizing: border-box}
 .cvbody{
