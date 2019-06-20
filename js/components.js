@@ -15,8 +15,9 @@ Vue.component('para-section', {
         }
     },
     template : `
-    <div class="test">
+    <div class="test" :id="varName">
         <h1 varname="title">{{name}} </h1>
+        <button @click="deleteSection" class="btn btn-danger" style="float: right; margin-right:50px;">Delete this section</button>
         <div class="form-group">
           <textarea id="'textNewLine'" cols="50" rows="5" v-model="inputVal"></textarea>
         </div>
@@ -25,6 +26,11 @@ Vue.component('para-section', {
     watch : {
         inputVal(val) {
             this.$emit('input', val)
+        }
+    },
+    methods : {
+        deleteSection : function() {
+
         }
     }
 });
