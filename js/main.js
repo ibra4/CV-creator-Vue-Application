@@ -130,7 +130,7 @@ var app = new Vue({
           if (!this.sections.includes(this.sectionName)) {
               this.sections.push(this.sectionName);
               let componentName = '';
-              sectionVar = this.sectionVar = this.sectionName.replace(" ", "_");
+              sectionVar = this.sectionVar = this.sectionName.split(' ').join('_');
               sectionLocation = this.sectionLocation;
               sectionName = this.sectionName;
               switch(this.sectionStructure) {
