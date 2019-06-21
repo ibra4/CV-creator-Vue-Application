@@ -41,7 +41,7 @@ var app = new Vue({
         sectionLocation     : '',
         sectionStructure    : '',
         sectionVar          : '',
-        cvSections          : [],
+        // cvSections          : [],
 
         newSection : {}
 
@@ -159,6 +159,22 @@ var app = new Vue({
           } else {
               alert(this.sectionName + 'Already Exists');
           }
+        },
+        deleteSection : function(name) {
+            const cvElements  = document.querySelectorAll('.para .title');
+            cvElements.forEach(function(section) {
+                if (name.toUpperCase() == section.innerText) {
+                    section.parentElement.style.display = 'none';
+                }
+            });
+        },
+        enableSection : function(name) {
+            const cvElements  = document.querySelectorAll('.para .title');
+            cvElements.forEach(function(section) {
+                if (name.toUpperCase() == section.innerText.toUpperCase()) {
+                    section.parentElement.style.display = 'block';
+                }
+            });
         }
     }
 });

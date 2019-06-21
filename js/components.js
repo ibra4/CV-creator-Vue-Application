@@ -11,15 +11,17 @@ Vue.component('para-section', {
     props : ['title', 'varName', 'value', 'name'],
     data : function() {
         return {
-            inputVal : this.value
+            inputVal    : this.value,
+            enabled     : true
         }
     },
     template : `
     <div class="test" :id="varName">
-        <h1 varname="title">{{name}} </h1>
-        <button @click="deleteSection" class="btn btn-danger" style="float: right; margin-right:50px;">Delete this section</button>
+        <h1 varname="title" :class="{lineThrough : !enabled}">{{name}} </h1>
+        <button @click="deleteSection" class="btn btn-danger" style="float: right; margin-right:50px;" v-if="enabled">Delete this section</button>
+        <button @click="enableSection" class="btn btn-success" style="float: right; margin-right:50px;" v-if="!enabled">Restore this section</button>
         <div class="form-group">
-          <textarea id="'textNewLine'" cols="50" rows="5" v-model="inputVal"></textarea>
+          <textarea :class="{lineThrough : !enabled}" :readonly="!enabled" id="'textNewLine'" cols="50" rows="5" v-model="inputVal"></textarea>
         </div>
     </div>
     `,
@@ -30,7 +32,12 @@ Vue.component('para-section', {
     },
     methods : {
         deleteSection : function() {
-
+            this.enabled = false;
+            app.deleteSection(this.name);
+        },
+        enableSection : function() {
+            this.enabled = true;
+            app.enableSection(this.name);
         }
     }
 });
