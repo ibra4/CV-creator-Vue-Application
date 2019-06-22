@@ -1,3 +1,5 @@
+var cvbody = document.getElementById('cvbody');
+cvbody.style.height = cvbody.offsetWidth * 1.41426;
 const cvElements  = document.getElementById('paragraphs');
 var app = new Vue({
     el : '#app',

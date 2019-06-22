@@ -2,16 +2,13 @@ body {
     /* font-family: 'Gugi', cursive; */
     /* font-family: 'Ubuntu', sans-serif; */
     font-family: 'Source Code Pro', monospace;
-
-
 }
 body * {box-sizing: border-box}
 .cvbody{
     border: 1px solid blue;
     width: 21cm;
-    height: 29.7cm;
+    /* height: 29.7cm; */
     border: 1px solid #00f;
-    /* padding: 50px 30px 50px 30px; */
     box-sizing: border-box;
     position: relative;
 }
