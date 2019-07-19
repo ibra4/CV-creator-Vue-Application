@@ -7,7 +7,7 @@ body * {box-sizing: border-box}
 .cvbody{
     border: 1px solid blue;
     width: 21cm;
-    /* height: 29.7cm; */
+    height: 29.7cm;
     border: 1px solid #00f;
     box-sizing: border-box;
     position: relative;
@@ -171,3 +171,6 @@ i.icon {
     display: none;
 }
 .lineThrough {text-decoration: line-through}
+.col7 {width: 70%;}
+.col5 {width: 30%;}
+.col5, .col5 {}
