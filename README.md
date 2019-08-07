@@ -5,6 +5,4 @@
 ## I'll use **Vuex** instead of `Vue.js` 
 <br />
 
->## the new Reposetory:
-<br />
-   ## - [Here](https://github.com/ibra4/resume-live-builder-vuex-app)
+>## the new Reposetory: [Here](https://github.com/ibra4/resume-live-builder-vuex-app)
