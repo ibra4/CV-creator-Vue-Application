@@ -1,4 +1,5 @@
-https://img.shields.io/static/v1?label=<LABEL>&message=<MESSAGE>&color=<COLOR>
+### [![deprecated](http://badges.github.io/stability-badges/dist/deprecated.svg)](http://github.com/badges/stability-badges)
+
 # DEPRECATED
 ## I decided to use Vuex instead of Vue.js 
 ## the new Reposetory: [Here](https://github.com/ibra4/resume-live-builder-vuex-app)
