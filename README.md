@@ -1,5 +1,5 @@
 ### [![deprecated](http://badges.github.io/stability-badges/dist/deprecated.svg)](http://github.com/badges/stability-badges)
 
-# DEPRECATED
+# :x: DEPRECATED :x:
 ## I decided to use Vuex instead of Vue.js 
 ## the new Reposetory: [Here](https://github.com/ibra4/resume-live-builder-vuex-app)
