@@ -1,4 +1,4 @@
-### ![deprecated](https://img.shields.io/badge/stability-deprecated-red?style=for-the-badge&logo=appveyor)]()
+### ![deprecated](https://img.shields.io/badge/stability-deprecated-red?style=for-the-badge&logo=appveyor)
 
 # :DEPRECATED :x:
 
